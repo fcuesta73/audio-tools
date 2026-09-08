@@ -13,13 +13,13 @@ export function RecordingsList({ clips, onDelete }: RecordingsListProps) {
 
   return (
     <ul className="recordings-list">
-      {clips.map((clip) => (
+      {clips.map((clip, index) => (
         <li key={clip.id} className="recording-item">
           <div className="recording-meta">
             <span className="recording-time">{formatTime(clip.createdAt)}</span>
             <span className="recording-duration">{formatDuration(clip.durationMs)}</span>
           </div>
-          <audio controls src={clip.url} className="recording-player" />
+          <audio controls autoPlay={index === 0} src={clip.url} className="recording-player" />
           <button
             type="button"
             className="delete-button"
